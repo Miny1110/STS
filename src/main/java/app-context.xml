@@ -13,7 +13,6 @@
 	
 	<!-- 객체생성 -->
 	<bean id="message" class="com.exe.springdi3.MessageEn"/>
-	<bean id="messageService" class="com.exe.springdi4.MyMessageService"/>
 	
 	<!-- main절에 있는 serviceConsumer 객체 생성
 		serviceConsumer 생성자로 객체를 생성하는데,
@@ -21,6 +20,10 @@
 		: 제어의 역전 (IoC) -->
 	<bean id="serviceConsumer" class="com.exe.springdi4.ServiceConsumer">
 		<constructor-arg ref="messageService"/>
+		<property name="timeService" ref="timeService"/>
 	</bean>
+	
+	<bean id="messageService" class="com.exe.springdi4.MyMessageService"/>
+	<bean id="timeService" class="com.exe.springdi4.MyTimeService"/>
 
 </beans>
