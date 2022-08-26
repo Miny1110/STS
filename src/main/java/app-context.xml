@@ -18,12 +18,17 @@
 		serviceConsumer 생성자로 객체를 생성하는데,
 		그 생성자에 messageService를 넣어라 
 		: 제어의 역전 (IoC) -->
-	<bean id="serviceConsumer" class="com.exe.springdi4.ServiceConsumer">
+	<!-- autowire="byName" : 객체와 이름이 똑같은 메소드를 찾아가라는 명령
+						이걸 쓰면 property name 코드를 생략해도 실행된다 -->
+	<bean id="serviceConsumer" class="com.exe.springdi4.ServiceConsumer"
+	autowire="byName">
 		<constructor-arg ref="messageService"/>
 		<property name="timeService" ref="timeService"/>
+		<!-- <property name="jobService" ref="jobService"/> -->
 	</bean>
 	
 	<bean id="messageService" class="com.exe.springdi4.MyMessageService"/>
 	<bean id="timeService" class="com.exe.springdi4.MyTimeService"/>
+	<bean id="jobService" class="com.exe.springdi4.MyJobService"/>
 
 </beans>
