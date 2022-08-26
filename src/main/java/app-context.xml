@@ -9,9 +9,18 @@
 
 	<description>Example configuration to get you started.</description>
 
-	<context:component-scan base-package="com.exe.springdi3" />
+	<context:component-scan base-package="*" />
 	
 	<!-- 객체생성 -->
 	<bean id="message" class="com.exe.springdi3.MessageEn"/>
+	<bean id="messageService" class="com.exe.springdi4.MyMessageService"/>
+	
+	<!-- main절에 있는 serviceConsumer 객체 생성
+		serviceConsumer 생성자로 객체를 생성하는데,
+		그 생성자에 messageService를 넣어라 
+		: 제어의 역전 (IoC) -->
+	<bean id="serviceConsumer" class="com.exe.springdi4.ServiceConsumer">
+		<constructor-arg ref="messageService"/>
+	</bean>
 
 </beans>
