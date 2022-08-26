@@ -1,4 +1,4 @@
-package com.exe.springdi2;
+package com.exe.springdi3;
 
 public class MessageKr implements Message{
 
